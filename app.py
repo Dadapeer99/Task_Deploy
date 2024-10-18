@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, jsonify, redirect, url_for, s
 import json
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'  # Change this to a random string
+app.secret_key = 'Dadapeer'  # Change this to a random string
 
 # Dummy login credentials
 dummy_credentials = {
@@ -26,8 +26,8 @@ def save_tasks(tasks):
 # Home route to display login page
 @app.route('/')
 def login():
-    if 'email' in session:
-        return redirect(url_for('index'))
+    # if 'email' in session:
+    #     return redirect(url_for('index'))
     return render_template('login.html')
 
 # Handle login form submission
@@ -37,22 +37,23 @@ def handle_login():
     password = request.form['password']
 
     if email == dummy_credentials['email'] and password == dummy_credentials['password']:
-        session['email'] = email
-        return redirect(url_for('index'))
+        # session['email'] = email
+        # return redirect(url_for('index'))
+        return render_template("index.html")
     else:
         return "Invalid credentials. Please try again."
 
 # Logout route
 @app.route('/logout')
 def logout():
-    session.pop('email', None)
+    # session.pop('email', None)
     return redirect(url_for('login'))
 
 # Dashboard route (after login)
 @app.route('/dashboard')
 def index():
-    if 'email' not in session:
-        return redirect(url_for('login'))
+    # if 'email' not in session:
+    #     return redirect(url_for('login'))
     return render_template('index.html')
 
 # API routes for managing tasks
