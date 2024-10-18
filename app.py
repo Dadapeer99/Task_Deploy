@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, jsonify, redirect, url_for, s
 import json
 
 app = Flask(__name__)
-app.secret_key = 'Dadapeer'  # Change this to a random string
+app.secret_key = 'Dadapeer' 
 
 # Dummy login credentials
 dummy_credentials = {
